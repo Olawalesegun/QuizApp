@@ -1,11 +1,11 @@
 public class Student {
-    private String name;
+    private String studentName;
     private String response;
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
     public void setName(String name) {
-        this.name = name;
+        this.studentName = studentName;
     }
     public String getResponse() {
         return response;

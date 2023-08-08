@@ -5,6 +5,20 @@ public class Question {
     private String questionOption2;
     private String questionOption3;
     private String questionOption4;
+    private String answer;
+
+    public Question(int questionID, String questionAsked,
+                    String questionOption1, String questionOption2,
+                    String questionOption3, String questionOption4,
+                    String answer) {
+        this.questionID = questionID;
+        this.questionAsked = questionAsked;
+        this.questionOption1 = questionOption1;
+        this.questionOption2 = questionOption2;
+        this.questionOption3 = questionOption3;
+        this.questionOption4 = questionOption4;
+        this.answer = answer;
+    }
 
     public int getQuestionID() {
         return questionID;
@@ -52,5 +66,8 @@ public class Question {
 
     public void setQuestionOption4(String questionOption4) {
         this.questionOption4 = questionOption4;
+    }
+    public String getAnswer() {
+        return answer;
     }
 }

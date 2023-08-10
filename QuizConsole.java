@@ -10,6 +10,13 @@ public class QuizConsole {
     private int studentScore;
 
     public void startQuiz(){
+       welcomePagePrompt();
+       gameCommencePrompt();
+       takeStudentName();
+       quizAppTakes();
+
+    }
+    public void welcomePagePrompt(){
         System.out.println(
                 """
                     =================================================
@@ -18,24 +25,35 @@ public class QuizConsole {
                     Hi Student, Kindly reply with your name.
                 """
         );
-        takeStudentName();
+    }
+    public void gameCommencePrompt(){
         System.out.println("""
                        =========================================
                               THE GAME WILL NOW COMMENCE
                           ==================================
-                """);
-
-        System.out.println("""
-                As the teacher, kindly Press your preferred number
-                    from 1 - 3 to pick the question for student. 
-                """);
+                """
+        );
+    }
+    public void quizAppTakes(){
+        for(int i= 1; i<=3; i++){
+            teacherTakesTurn();
+            studentTakesTurn();
+        }
+    }
+    public void teacherTakesTurn(){
+        teacherPrompt();
         teacherInput = takeTeacherInput();
         teacherSetsQuestion(teacherInput);
-
+    }
+    public void studentTakesTurn(){
+        studentPrompt();
+        studentResponse = studentResponseInput();
+        validateStudentResponse(studentResponse);
+    }
+    public void studentPrompt(){
         System.out.println("""
                 Hi Student, Kindly enter your response
                 """);
-        studentResponse = studentResponseInput();
     }
     public void validateStudentResponse(String input){
         if(input.equals(teacher.getAnswers(teacherInput))){
@@ -44,6 +62,12 @@ public class QuizConsole {
         else{
             studentScore--;
         }
+    }
+    public void teacherPrompt(){
+        System.out.println("""
+                     As the teacher, kindly Press your preferred number
+                    from 1 - 3, while starting with 1 for the student to pick. 
+                """);
     }
     public void teacherSetsQuestion(int intake){
         teacher.getQuestion(intake);

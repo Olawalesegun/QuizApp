@@ -7,6 +7,12 @@ public class QuizConsole {
     Scanner scanInput = new Scanner(System.in);
     private String studentResponse;
     private int teacherInput;
+    private String studentName;
+
+    public int getStudentScore() {
+        return studentScore;
+    }
+
     private int studentScore;
 
     public void startQuiz(){
@@ -14,7 +20,10 @@ public class QuizConsole {
        gameCommencePrompt();
        takeStudentName();
        quizAppTakes();
-
+       printResult();
+    }
+    public void printResult(){
+        System.out.println("Hi " + student.getStudentName() + " your score is " + getStudentScore());
     }
     public void welcomePagePrompt(){
         System.out.println(
@@ -78,14 +87,15 @@ public class QuizConsole {
     }
     public void takeStudentName(){
         System.out.println("Hi, Student!! Enter your name");
-        String studentNameIntake = studentResponseInput();
-        student.setName(studentNameIntake);
+        studentName = studentResponseInput();
+       // student.setName(studentNameIntake);
+        //return studentNameIntake;
     }
     public String getStudentName(){
         return student.getStudentName();
     }
     public String studentResponseInput(){
-        String studentResponse = scanInput.nextLine();
+        String studentResponse = scanInput.next();
         return studentResponse;
     }
    /* public void setQuiz(){
